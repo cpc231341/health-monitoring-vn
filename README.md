@@ -6,12 +6,14 @@ Software que monitora a saúde dos astronautas durante missões espaciais, com u
 
 ## Sumário
 
-- [Contexto](#contexto)
-- [Problemas enfrentados no espaço](#problemas-enfrentados-no-espaço)
-- [Indicadores de saúde monitorados](#indicadores-de-saúde-monitorados)
-- [Objetivos](#objetivos)
-- [Recomendações de funcionalidades](#recomendações-de-funcionalidades)
-- [Fontes para pesquisa](#fontes-para-pesquisa)
+- [Monitoramento da Saúde de Astronautas em Missões Espaciais](#monitoramento-da-saúde-de-astronautas-em-missões-espaciais)
+  - [Sumário](#sumário)
+  - [Contexto](#contexto)
+  - [Problemas enfrentados no espaço](#problemas-enfrentados-no-espaço)
+  - [Indicadores de saúde monitorados](#indicadores-de-saúde-monitorados)
+  - [Objetivos](#objetivos)
+  - [Recomendações de funcionalidades](#recomendações-de-funcionalidades)
+  - [Fontes para pesquisa](#fontes-para-pesquisa)
 
 ## Contexto
 
@@ -54,4 +56,3 @@ Com base no Human Research Program (HRP) da NASA, o projeto considera os seguint
 - [5 perigos para seres humanos no espaço](https://www.nasa.gov/hrp/hazards/)
 - [Riscos para humanos durante um voo espacial](https://www.nasa.gov/hrp/risks/)
 - [Human Research Program: artigos e pesquisas em andamento](https://www.nasa.gov/hrp/ongoing-hrp-research/)
-# health-monitoring--vn
