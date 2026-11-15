@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'">
+<title>Vento Norte Health · Selecionar time</title>
+<script src="support.js"></script>
+</head>
+<body>
+<template id="dc-tpl"><x-dc>
+<helmet>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+
+body{margin:0;background:#06182E;color:#E8F0F8}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#62C3FF;text-decoration:none}
+a:hover{color:#8AD3FF}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid #62C3FF;outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.navlink:not([aria-current]):hover{background:#0C2442!important;color:#E8F0F8!important}
+.btn-p:hover{background:#8AD3FF!important;color:#04162B!important}
+.btn-s:hover{background:#0C2442!important;color:#E8F0F8!important}
+.hov:hover{border-color:#62C3FF!important}
+input::placeholder,textarea::placeholder{color:#8AA3BD}
+.pick:has(input:focus-visible){outline:2px solid #62C3FF;outline-offset:2px}
+.pick:has(input:checked){border-color:#62C3FF;background:#0F2E52}
+@keyframes lkspin{to{transform:rotate(360deg)}}
+.lkspin{animation:lkspin 1.2s linear infinite}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+button:disabled{opacity:.45;cursor:not-allowed}
+
+</style>
+</helmet>
+
+<div style="min-height:900px;background:#030D1A;color:#E8F0F8;font-family:'Source Sans Pro', 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;font-size:16px;line-height:1.45;display:flex;flex-direction:column">
+  <header style="display:flex;align-items:center;gap:14px;padding:0 24px;height:72px;font-family:'Source Sans Pro', 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#A9BDD2">
+    <img src="assets/vento-norte-logo.png" width="40" height="40" alt="Logo do time Vento Norte UEA" style="border-radius:50%">
+    <span style="color:#E8F0F8;font-size:20px;letter-spacing:.14em">Vento Norte Health</span>
+  </header>
+  <main style="flex:1;display:flex;justify-content:center;padding:56px 24px 64px" onKeyDown="{{onKey}}">
+    <div style="width:100%;max-width:640px;display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h1 style="margin:0;font-family:'Source Sans Pro', 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;font-size:15px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;line-height:1.2">Selecionar time</h1>
+      </div>
+      <div style="position:relative">
+        <label id="dd-l" for="dd" style="display:block;font-family:'Source Sans Pro', 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8AA3BD;margin-bottom:8px">Time</label>
+        <button id="dd" type="button" aria-haspopup="listbox" aria-expanded="{{open}}" aria-labelledby="dd-l dd" onClick="{{toggle}}" class="hov" style="width:100%;min-height:76px;display:flex;align-items:center;gap:16px;padding:10px 16px;border-radius:2px;border:1px solid #2F5C8A;background:transparent;text-align:left">
+          <sc-if value="{{has}}" hint-placeholder-val="{{ true }}"><img src="assets/patch-zagaia.png" width="56" height="54" alt="" style="flex:none;object-fit:contain"><span style="flex:1;display:flex;flex-direction:column;min-width:0"><span style="font-size:20px;font-weight:600;line-height:1.2">Zagaia</span><span style="font-size:15px;color:#A9BDD2">Vento Norte UEA · LASC 7</span></span></sc-if>
+          <sc-if value="{{none}}" hint-placeholder-val="{{ false }}"><span style="flex:1;font-size:18px;color:#A9BDD2">Escolha um time</span></sc-if>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A9BDD2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;transform:{{chevRot}}"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <sc-if value="{{isOpen}}" hint-placeholder-val="{{ false }}">
+          <div role="listbox" aria-label="Times" style="position:absolute;left:0;right:0;top:100%;margin-top:8px;z-index:5;border-radius:2px;border:1px solid #2F5C8A;background:#071D38;padding:4px;box-shadow:0 12px 32px rgba(0,0,0,.4)">
+            <a role="option" aria-selected="false" href="Tripulantes.dc.html" class="hov" style="width:100%;min-height:76px;display:flex;align-items:center;gap:16px;padding:8px 12px;border-radius:2px;border:1px solid transparent;background:transparent;text-align:left;color:#E8F0F8">
+              <img src="assets/patch-zagaia.png" width="56" height="54" alt="" style="flex:none;object-fit:contain"><span style="flex:1;display:flex;flex-direction:column"><span style="font-size:18px;font-weight:600;line-height:1.2">Zagaia</span><span style="font-size:15px;color:#A9BDD2">Vento Norte UEA · LASC 7 · 5 tripulantes</span></span>
+            </a>
+            <button type="button" role="option" aria-selected="false" onClick="{{newTeam}}" class="hov" style="width:100%;min-height:64px;display:flex;align-items:center;gap:16px;padding:8px 12px;border-radius:2px;border:1px solid transparent;background:transparent;text-align:left;margin-top:4px">
+              <span aria-hidden="true" style="flex:none;width:56px;height:54px;display:flex;align-items:center;justify-content:center;border:1.5px dashed #2F5C8A;border-radius:2px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#62C3FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span style="font-size:20px;font-weight:600">Novo time</span>
+            </button>
+          </div>
+        </sc-if>
+      </div>
+      <div role="status" aria-live="polite" style="min-height:24px;color:#A9BDD2;font-size:15px">{{msg}}</div>
+    </div>
+  </main>
+</div>
+</x-dc></template>
+<script src="Equipe.logic.js"></script>
+</body>
+</html>

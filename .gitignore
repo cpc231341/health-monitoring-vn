@@ -13,6 +13,7 @@ __pycache__/
 
 # Builds e saídas
 dist/
+dist-electron/
 build/
 out/
 *.log
@@ -24,9 +25,19 @@ coverage/
 .mypy_cache/
 .next/
 
+# Electron
+dist-electron/
+*.exe
+*.dmg
+*.AppImage
+
 # Editores e sistema operacional
 .vscode/
 .idea/
 *.swp
 .DS_Store
 Thumbs.db
+
+# Dados locais do app
+userData/
+*.db

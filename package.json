@@ -1,0 +1,58 @@
+{
+  "name": "vento-norte-health",
+  "productName": "Vento Norte Health",
+  "version": "0.1.0",
+  "description": "Monitoramento da saúde de astronautas em missões espaciais. Protótipo do time Vento Norte UEA para o NASA Space Apps Challenge 2026.",
+  "type": "module",
+  "main": "dist-electron/main/index.js",
+  "homepage": "./",
+  "author": "Vento Norte UEA",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "start": "npm run build && electron dist-electron/main/index.js",
+    "test": "vitest",
+    "mock:generate": "python tools/mock_data/generate.py",
+    "dist": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.10.3",
+    "electron-squirrel-startup": "^1.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.9.1",
+    "electron-vite": "^2.0.0",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0",
+    "@testing-library/react": "^14.1.0",
+    "@testing-library/jest-dom": "^6.1.5"
+  },
+  "build": {
+    "appId": "com.ventonondesaude.app",
+    "productName": "Vento Norte Health",
+    "directories": {
+      "buildResources": "resources"
+    },
+    "files": [
+      "dist-electron",
+      "dist",
+      "resources/mock/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
