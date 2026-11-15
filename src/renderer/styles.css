@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { scrollbar-width: thin; scrollbar-color: #2F5C8A #041224; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #041224; }
+  ::-webkit-scrollbar-thumb { background: #1F4469; border-radius: 6px; border: 2px solid #041224; }
+  ::-webkit-scrollbar-thumb:hover { background: #62C3FF; }
+  ::-webkit-scrollbar-corner { background: #041224; }
+  html, body { background: #06182E; color: #E8F0F8; }
+  body { font-family: theme('fontFamily.sans'); font-size: 16px; line-height: 1.45; }
+  a { color: #62C3FF; }
+  a:hover { color: #8AD3FF; }
+  :focus-visible { outline: 2px solid #62C3FF; outline-offset: 2px; }
+  button { cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+}
+
+@layer utilities {
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+@layer components {
+  .btn-p { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-sm bg-vn-accent px-5 py-2.5 text-base font-semibold text-vn-ink hover:bg-vn-accenthi hover:text-vn-ink; }
+  .btn-s { @apply inline-flex min-h-[40px] items-center justify-center gap-2 rounded-sm border border-vn-line2 px-3.5 py-1.5 text-base font-medium text-vn-text hover:bg-vn-surface; }
+  .pill { @apply min-h-[40px] rounded-full border px-3.5 py-1.5 text-[15px] font-medium text-vn-text; }
+  .pill-on { @apply border-vn-accent bg-vn-surface2; }
+  .pill-off { @apply border-vn-line2 bg-transparent; }
+  .mono-label { @apply text-xs uppercase tracking-[.12em]; }
+}
+
+/* Gráficos do Tremor/Recharts: rótulos legíveis no fundo escuro. */
+.recharts-cartesian-axis-tick-value { fill: #A9BDD2; font-size: 13px; }

@@ -111,6 +111,24 @@ vento-norte-health/
     └── REQUISITOS.md              # Especificação completa
 ```
 
+## Interface (src/renderer)
+
+A interface é feita em React com Tailwind CSS e gráficos do Tremor (o detalhado de Indicadores usa Recharts, a base do Tremor, para mostrar a faixa normal). Rotas por hash, para funcionar carregando o app por arquivo no Electron.
+
+| Tela | Rota | Arquivo |
+|---|---|---|
+| Selecionar time | `#/` | `pages/SelecionarTime.jsx` |
+| Quem é você? | `#/tripulantes` | `pages/Tripulantes.jsx` |
+| Hoje (painel pessoal, personalizável) | `#/hoje` | `pages/Hoje.jsx` |
+| Indicadores | `#/indicadores?ind=sn` | `pages/Indicadores.jsx` |
+| Painel da tripulação | `#/tripulacao` | `pages/PainelTripulacao.jsx` |
+| Telas ainda não construídas | `#/medir`, `#/diario`, ... | `pages/EmBreve.jsx` |
+
+- Tripulação do Zagaia (nomes, funções, capitão e fotos): `src/renderer/data/crew.js` e `src/renderer/assets/crew/`.
+- Faixas, textos e "o que fazer" de cada indicador: `src/renderer/data/indicadores.js`. Cenários e ambientes da demonstração: `src/renderer/data/hoje.js`.
+- Em **Hoje**, *Personalizar* permite arrastar os cartões pela alça, mudar a largura puxando a borda direita e arquivar. O layout fica salvo por tripulante neste computador.
+- Ao trocar o cenário da demonstração, a tela avisa o processo principal por `window.api.setScenario`.
+
 ## Segurança
 
 - ✅ `contextIsolation` habilitado

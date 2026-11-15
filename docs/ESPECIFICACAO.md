@@ -22,7 +22,7 @@ Aplicativo desktop (Electron + React) que funciona como assistente de bordo para
 | RF16 | Gamificação: pontos e sequência | E |
 | RF21 | Modo demonstração com cenários (normal, hipóxia, febre, stress, radiação) | E |
 | RF26 | Barra de sinais vitais fixa no topo | E |
-| RF27 | Estado do anel (conectado, sincronizando, carregando) | E |
+| RF27 | Estado do anel (conectado, sincronizando, carregando). Tela `/sincronizar` entre a senha e o painel, uma vez por sessão: busca o anel em 3 passos, avisa se está carregando (bateria abaixo de 20%) sem bloquear a entrada, e permite pular | E |
 
 ## Requisitos Não-Funcionais
 
@@ -48,6 +48,16 @@ Aplicativo desktop (Electron + React) que funciona como assistente de bordo para
 | RN06 | Privacidade 3 níveis: Pessoal (astronauta), Comandante (resumos), Público (agregados) |
 | RN07 | Diário sempre pessoal. Humor agregado |
 | RN14 | Pontos por hábitos. Sequência não quebra em alerta/EVA/anel carregando |
+| RN15 | Refeições programadas: café, almoço e jantar 1 registro por dia, lanche até 2. Sem refeição programada em lançamento e reentrada (só lanche pronto) |
+| RN16 | Cada item do cardápio combina com certas refeições; fora delas, avisa e permite registrar mesmo assim |
+| RN17 | Teto de porções por categoria em cada refeição (ex.: 1 prato principal no almoço e no jantar) |
+| RN18 | 2 bebidas saborizadas por dia por astronauta, incluindo café |
+| RN19 | Sobremesas: limite diário, 1 por refeição, aviso de 3 dias seguidos acima e de estoque coletivo baixo |
+| RN20 | Lançamento e reentrada: só itens prontos (dispensador de água desligado) |
+| RN21 | Pratos principais e sobremesas têm estoque finito e coletivo, exibido sem nomes |
+| RN22 | Pão comum é proibido a bordo (migalhas flutuam) |
+
+RN15 a RN22 (alimentação): pesquisa, fontes e o que ainda precisa de validação em `docs/ALIMENTACAO_RN.md`.
 
 ## Estrutura de Dados
 
@@ -125,7 +135,7 @@ Aplicativo desktop (Electron + React) que funciona como assistente de bordo para
 4. **Rotina**: Refeições, treino, sono, pontos
 5. **Diário**: Entradas pessoais (sempre privadas)
 6. **Alerta**: Guia passo a passo
-7. **Comandante**: Status da tripulação
+7. **Painel do capitão** (`/comandante`, só o capitão): estado de cada tripulante (pior estado entre anel e medidas manuais, RN02), fila de decisão com os críticos que continuaram críticos na re-medição (RN03, RN04), prontidão da missão e metas do time. Mostra só o estado, nunca valores, diário, humor individual ou alimentação (RN06, RN07). O estado de cada medida é gravado junto com ela (`status`) e é só ele que sai para o painel. "Marcar como acompanhado" dispensa uma escalação e fica só neste computador
 8. **Público**: Radiação, ar, clima da equipe
 
 ## Componentes Reutilizáveis
